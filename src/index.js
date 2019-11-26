@@ -31,10 +31,10 @@ const getData = (html) => {
     shortDetail += $(elem).text();
   });
 
-  const longDetails = getDivContentListData($, 'รายละเอียดเพิ่มเติม');
-  const termAndConditions = getUlContentListData($, 'กฎระเบียบบ้านพัก');
-  const nearlyRestaurants = getUlContentListData($, 'ร้านอาหารและคาเฟ่ใกล้เคียง');
-  const nearlyLandmarks = getUlContentListData($, 'สถานที่และแหล่งท่องเที่ยวใกล้เคียง');
+  const longDetails = getDivContentListData($, "span:contains('รายละเอียดเพิ่มเติม')");
+  const termAndConditions = getUlContentListData($, "span:contains('กฎระเบียบบ้านพัก')");
+  const nearlyRestaurants = getUlContentListData($, "span:contains('ร้านอาหารและคาเฟ่ใกล้เคียง')");
+  const nearlyLandmarks = getUlContentListData($, "span:contains('สถานที่และแหล่งท่องเที่ยวใกล้เคียง'), span:contains('แหล่งท่องเที่ยวใกล้เคียง')");
   const checkIn = getTimeFromText($("span:contains('Check In')").text());
   const checkOut = getTimeFromText($("span:contains('Check Out')").text());
   const minPerson = '';
@@ -74,9 +74,9 @@ const getData = (html) => {
   };
 };
 
-const getDivContentListData = ($, titleText) => {
+const getDivContentListData = ($, titleSelector) => {
   const data = [];
-  const matchedElem = $(`span:contains(${titleText})`);
+  const matchedElem = $(titleSelector);
   if (matchedElem) {
     matchedElem
       .parent("div")
@@ -93,9 +93,9 @@ const getDivContentListData = ($, titleText) => {
   return data;
 };
 
-const getUlContentListData = ($, titleText) => {
+const getUlContentListData = ($, titleSelector) => {
   const data = [];
-  const matchedElem = $(`span:contains(${titleText})`);
+  const matchedElem = $(titleSelector);
   if (matchedElem) {
     matchedElem
       .parent("div")

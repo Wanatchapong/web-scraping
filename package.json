@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/Wanatchapong/web-scraping#readme",
   "dependencies": {
-    "async": "^3.1.0",
+    "async": "^3.2.2",
     "cheerio": "^1.0.0-rc.3",
     "nightmare": "^3.0.2"
   }
